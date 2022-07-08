@@ -1,0 +1,12 @@
+{
+	"common": {
+	"txtUsername":"user-name",
+	"txtPassword":"password",
+	"btnSubmit":"//input[@id='login-button']"
+	},
+	"login": {
+	"txtUsername":"user-name",
+	"txtPassword":"password",
+	"btnSubmit":"//input[@id='login-button']"
+	}
+}
