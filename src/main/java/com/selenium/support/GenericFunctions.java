@@ -5,24 +5,15 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.NoSuchElementException;
-import java.util.function.Function;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.selenium.repository.ReadConfig;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class GenericFunctions extends BaseTest {
 
@@ -39,36 +30,15 @@ public class GenericFunctions extends BaseTest {
 		return genericFunctions;
 	}
 
-	public void launchBrowser() {
-	
-	}
-
 	public void openUrl(String url) {
 		driver.get(readConfig.getConfigProperty(url));
 		driver.manage().window().maximize();
-
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-		sendKeys("username", "common", "txtUsername");
-		sendKeys("password", "common", "txtPassword");
-		clickOn("common", "btnSubmit");
-
-		driver.quit();
-
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(10))
-				.pollingEvery(Duration.ofSeconds(2)).ignoring(NoSuchElementException.class);
-
-		Function function = new Function<WebDriver, WebElement>() {
-			public WebElement apply(WebDriver driver) {
-				return driver.findElement(By.id(""));
-			}
-		};
-
-		WebElement fooElement = wait.until(function);
-
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 
-
+	public void logOut() {
+		clickOn("logout", "homepage");
+	}
 
 	public void getScreenshot() throws IOException {
 
@@ -87,7 +57,7 @@ public class GenericFunctions extends BaseTest {
 //		fos.write(byteArr);
 //		fos.close();
 //		System.out.println("Screenshot saved successfully");
-		
+
 		/* Base64 */
 //		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 //		String base64code = takesScreenshot.getScreenshotAs(OutputType.BASE64);
@@ -107,14 +77,14 @@ public class GenericFunctions extends BaseTest {
 		return "./Screenshots/img1" + formattedDate + ".jpg";
 	}
 
-	public void sendKeys(String value, String screenName, String fieldName) {
+	public void sendKeys(String value, String fieldName, String screenName) {
 		System.out.println(readConfig.getLocator(screenName, fieldName));
 		WebElement locator = driver.findElement(By.id(readConfig.getLocator(screenName, fieldName)));
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(locator));
 		locator.sendKeys(value);
 	}
 
-	public void clickOn(String screenName, String fieldName) {
+	public void clickOn(String fieldName, String screenName) {
 		System.out.println(readConfig.getLocator(screenName, fieldName));
 		WebElement locator = driver.findElement(By.xpath(readConfig.getLocator(screenName, fieldName)));
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(locator));

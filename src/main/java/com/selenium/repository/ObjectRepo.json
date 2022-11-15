@@ -1,12 +1,16 @@
 {
 	"common": {
-	"txtUsername":"user-name",
-	"txtPassword":"password",
-	"btnSubmit":"//input[@id='login-button']"
+		"txtUsername": "user-name",
+		"txtPassword": "password",
+		"btnSubmit": "//input[@id='login-button']"
 	},
 	"login": {
-	"txtUsername":"user-name",
-	"txtPassword":"password",
-	"btnSubmit":"//input[@id='login-button']"
+		"txtUsername": "user-name",
+		"txtPassword": "password",
+		"btnSubmit": "//input[@id='login-button']"
+	},
+	"homepage": {
+		"btnOpenMenu": "//button[contains(.,'Open Menu')]",
+		"logout": "//div//a[contains(.,'Logout')]"
 	}
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="38.444">
+<testcase classname="Title of your feature" name="Title of your scenario" time="37.861">
+<system-out><![CDATA[Given I Open Broswer........................................................passed
+When I Navigate to saucedemo Application....................................passed
+And I Enter "standard_user" into "txtUsername" present in "common"..........passed
+And I Enter "secret_sauce" into "txtPassword" present in "common"...........passed
+And I click "btnSubmit" present in "common".................................passed
+Then I click "btnOpenMenu" present in "homepage"............................passed
+And I Log Out...............................................................passed
+And I Close Broswer.........................................................passed
+]]></system-out>
+</testcase>
+</testsuite>

@@ -2,7 +2,7 @@
 Feature: Title of your feature
   I want to use this template for my feature file
 
-@Regression
+@ignore
   Scenario: Title of your scenario
     Given I Open Broswer
     When I Navigate to saucedemo Application
